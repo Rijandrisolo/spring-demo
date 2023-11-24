@@ -11,12 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
 
     @Autowired
-    private HelloService helloservice;
-
+    private HelloService helloService;
     @GetMapping
     public String DireHello(){
 
-        return helloservice.salutations();
+        return helloService.salutations();
     }
     @GetMapping("/salut")
     public String DireSalut(){
