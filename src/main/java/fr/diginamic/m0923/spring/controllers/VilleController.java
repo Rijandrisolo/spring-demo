@@ -2,48 +2,38 @@ package fr.diginamic.m0923.spring.controllers;
 
 
 import fr.diginamic.m0923.spring.entity.Ville;
+import fr.diginamic.m0923.spring.entity.VilleDao;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 @RestController
 @RequestMapping("/villes")
-public class VilleController {
-    List<Ville> villes = new ArrayList<>();
 
-    public VilleController(List<Ville> villes) {
-
-        this.villes = villes;
-        villes.add(new Ville(1, "Nice", 343000));
-        villes.add(new Ville(2, "Carcassonne", 47800));
-        villes.add(new Ville(3, "Narbonne", 53400));
-        villes.add(new Ville(4, "Lyon", 484000));
-        villes.add(new Ville(5, "Foix", 9700));
-        villes.add(new Ville(6, "Pau", 77200));
-        villes.add(new Ville(7, "Marseille", 850700));
-        villes.add(new Ville(8, "Tarbes", 40600));
-
+public class VilleController implements VilleDao{
+    @GetMapping
+    @Override
+    public Ville newVille(Ville nwVille) throws SQLException {
+        return null;
     }
 
-    public List<Ville> getVilles() {
-        return villes;
-    }
-
-    public void setVilles(List<Ville> villes) {
-        this.villes = villes;
-    }
 
     @GetMapping
+    @Override
     public List<Ville> listes() {
-        return villes;
+
+
+       return villes;
     }
 
    @GetMapping("/id/{id}")
-   public Ville extraireVille(@PathVariable Integer id) {
+   @Override
+   public Ville extraireVilleById(@PathVariable Integer id) {
         Ville villeById=null;
 
        for(Ville ville : villes){
@@ -56,10 +46,11 @@ public class VilleController {
        }
         return villeById;
     }
-    ///Liste ville
+    ///Liste ville by nom
 
    @GetMapping("/{nom}")
-   public Ville nomVille(@PathVariable String nom) {
+   @Override
+   public Ville extraireVilleByNom(@PathVariable String nom) {
     Ville villeByNom=null;
        for(Ville ville : villes){
 
@@ -74,6 +65,7 @@ public class VilleController {
 
     /// Modification objet ville
     @PostMapping("/{id}")
+    @Override
     public ResponseEntity<String> modifVille(@PathVariable int id, @RequestBody Ville ville){
         if (id<=0){
             return ResponseEntity.badRequest().body("Identifiant incorrect");
@@ -111,7 +103,8 @@ public class VilleController {
 
  ////Suppression objet ville
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteVille(@PathVariable int id){
+    @Override
+    public ResponseEntity<String> deleteVilleById(@PathVariable int id){
         if (id<=0){
             return ResponseEntity.badRequest().body("Identifiant incorrect");
         }
@@ -126,6 +119,8 @@ public class VilleController {
         }
         return ResponseEntity.badRequest().body("Non trouvée");
     }
+
+
 
 }
 

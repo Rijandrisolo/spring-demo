@@ -1,17 +1,26 @@
 package fr.diginamic.m0923.spring.entity;
 
+import jakarta.persistence.*;
+import org.springframework.boot.autoconfigure.web.WebProperties;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 
 
-
-
+@Entity
+@Table(name ="VILLE")
 public class Ville {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(name="nom")
     private String nom;
+    @Column(name="nb_habitants")
     private int nbHabitants;
+
+    public Ville() {
+    }
 
     public Ville(int id, String nom, int nbHabitants) {
         this.id = id;
@@ -43,8 +52,14 @@ public class Ville {
         this.nbHabitants = nbHabitants;
     }
 
-    List<Ville> villes = new ArrayList<>();
-
+    @Override
+    public String toString() {
+        return "Ville :" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", nbHabitants=" + nbHabitants
+                ;
+    }
 }
 
 
