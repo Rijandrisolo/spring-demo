@@ -7,6 +7,7 @@ import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @RestController
@@ -55,6 +56,8 @@ public class VilleController {
        }
         return villeById;
     }
+    ///Liste ville
+
    @GetMapping("/{nom}")
    public Ville nomVille(@PathVariable String nom) {
     Ville villeByNom=null;
@@ -68,6 +71,8 @@ public class VilleController {
        return villeByNom;
 
     }
+
+    /// Modification objet ville
     @PostMapping("/{id}")
     public ResponseEntity<String> modifVille(@PathVariable int id, @RequestBody Ville ville){
         if (id<=0){
@@ -86,35 +91,36 @@ public class VilleController {
     }
 
 
-
+///Saisie nouvel objet ville
 //    @PutMapping
-//    public Ville newVille( @RequestBody Ville newVille){
+//  public Ville newVille( @RequestBody Ville nwVille){
 //
 //
 //
-//        for(Ville ville : villes){
-//            if(ville.getNom().equals(newNom) ){
-//                System.out.println("La ville existe déjà");
-//            }else {
-//                villes.add(new Ville(newVille));
-//                System.out.println("La ville est créée");
-//            }
-//        }
-//     return null;
-//
+//       for(Ville ville : villes){
+//           if(ville.getId()== nwVille.getId()){
+//               return ResponseEntity.badRequest().body("Ville existante");
+//           }else {
+//                villes.add(new Ville(nwVille));
+//                return
+//               return ResponseEntity.ok().body("Ville ajoutée");
+//           }
+//        }return null;
 //
 //    }
 
+ ////Suppression objet ville
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteVille(@PathVariable int id){
         if (id<=0){
             return ResponseEntity.badRequest().body("Identifiant incorrect");
         }
-        for (Ville v : villes){
-            if (v.getId()==id){
-
-               return ResponseEntity.ok("Ville supprimée");
-
+        Iterator<Ville> iteVille=villes.iterator();
+        while (iteVille.hasNext()){
+            Ville v = iteVille.next();
+            if (v.getId() == id){
+                iteVille.remove();
+                ResponseEntity.ok().body("Ville supprimée");
             }
 
         }
