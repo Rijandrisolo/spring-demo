@@ -16,12 +16,19 @@ import java.util.List;
 @RequestMapping("/villes")
 
 public class VilleController implements VilleDao{
+
     @GetMapping
     @Override
     public Ville newVille(Ville nwVille) throws SQLException {
         return null;
     }
+    ////liste villes
 
+    /**Méthode listes
+     * Afficher Liste de villes dans la table
+     *
+     * @return
+     */
 
     @GetMapping
     @Override
@@ -30,6 +37,14 @@ public class VilleController implements VilleDao{
 
        return villes;
     }
+    ///////liste ville byId
+
+    /**Méthode extraireVilleById
+     * Afficher une ville par son id
+     *
+     * @param id
+     * @return
+     */
 
    @GetMapping("/id/{id}")
    @Override
@@ -48,6 +63,13 @@ public class VilleController implements VilleDao{
     }
     ///Liste ville by nom
 
+    /**Méthode extraireVilleByNom
+     *
+     * Afficher une ville par son nom
+     * @param nom
+     * @return
+     */
+
    @GetMapping("/{nom}")
    @Override
    public Ville extraireVilleByNom(@PathVariable String nom) {
@@ -64,6 +86,16 @@ public class VilleController implements VilleDao{
     }
 
     /// Modification objet ville
+    /**Méthode modifVille
+     *
+     * Modifier une ville, recherche par son id
+     *
+     * @param id
+     * @param ville
+     * @return
+     *
+     */
+
     @PostMapping("/{id}")
     @Override
     public ResponseEntity<String> modifVille(@PathVariable int id, @RequestBody Ville ville){
@@ -102,6 +134,14 @@ public class VilleController implements VilleDao{
 //    }
 
  ////Suppression objet ville
+
+    /**Méthode deleteVilleByID
+     *
+     * Suppression ville par son id
+     *
+     * @param id
+     * @return
+     */
     @DeleteMapping("/{id}")
     @Override
     public ResponseEntity<String> deleteVilleById(@PathVariable int id){

@@ -16,7 +16,7 @@ public class Ville {
     private int id;
     @Column(name="nom")
     private String nom;
-    @Column(name="nb_habitants")
+    @Column(name="nbhabitants")
     private int nbHabitants;
 
     public Ville() {

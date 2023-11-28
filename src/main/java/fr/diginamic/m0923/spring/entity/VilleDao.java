@@ -41,7 +41,6 @@ public interface VilleDao {
      * @param ville
      * @return
      *
-     *
      */
 
     ResponseEntity<String> modifVille(@PathVariable int id, @RequestBody Ville ville) throws SQLException;
