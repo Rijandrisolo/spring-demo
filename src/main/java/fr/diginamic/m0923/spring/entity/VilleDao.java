@@ -75,7 +75,7 @@ public class VilleDao {
      */
     public Ville supprVille(int idVille){
       Ville villeSuppr=  em.find(Ville.class,idVille);
-      em.remove((villeSuppr));
+      em.remove(villeSuppr);
       return null;
     }
 
