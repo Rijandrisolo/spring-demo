@@ -15,7 +15,7 @@ public interface VilleDao {
      *
      * @return
      */
-    public List<Ville> listes() throws SQLException;
+     List<Ville> listes() throws SQLException;
 
     /**Méthode extraireVilleById
      * Afficher une ville par son id
@@ -23,7 +23,7 @@ public interface VilleDao {
      * @param id
      * @return
      */
-    public Ville extraireVilleById(@PathVariable Integer id) throws SQLException;
+     Ville extraireVilleById(@PathVariable Integer id) throws SQLException;
 
     /**Méthode extraireVilleByNom
      *
@@ -31,7 +31,7 @@ public interface VilleDao {
      * @param nom
      * @return
      */
-    public Ville extraireVilleByNom(@PathVariable String nom) throws SQLException;
+    Ville extraireVilleByNom(@PathVariable String nom) throws SQLException;
 
     /**Méthode modifVille
      *
@@ -44,7 +44,7 @@ public interface VilleDao {
      *
      */
 
-    public ResponseEntity<String> modifVille(@PathVariable int id, @RequestBody Ville ville) throws SQLException;
+    ResponseEntity<String> modifVille(@PathVariable int id, @RequestBody Ville ville) throws SQLException;
 
 
     ////Suppression objet ville
@@ -57,7 +57,7 @@ public interface VilleDao {
      * @return
      */
 
-    public ResponseEntity<String> deleteVilleById(@PathVariable int id) throws SQLException;
+    ResponseEntity<String> deleteVilleById(@PathVariable int id) throws SQLException;
 
 
     ///Saisie nouvel objet ville
@@ -69,6 +69,5 @@ public interface VilleDao {
      * @param nwVille
      * @return
      */
-
-  public Ville newVille( @RequestBody Ville nwVille) throws SQLException;
+    Ville newVille( @RequestBody Ville nwVille) throws SQLException;
 }
