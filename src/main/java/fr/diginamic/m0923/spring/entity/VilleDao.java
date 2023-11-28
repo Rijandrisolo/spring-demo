@@ -43,6 +43,11 @@ public class VilleDao {
          return em.find(Ville.class,id);
      }
 
+    /**
+     * Ville par nom
+     * @param nomVille
+     * @return
+     */
     public Ville extractByNom(String nomVille) {
 
         //return em.find(Ville.class,nomVille);
