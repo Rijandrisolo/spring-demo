@@ -59,6 +59,10 @@ public class Ville {
                 ", nbHabitants=" + nbHabitants
                 ;
     }
+
+    public Ville get(int i) {
+        return null;
+    }
 }
 
 

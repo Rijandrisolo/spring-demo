@@ -26,11 +26,19 @@ public class VilleController {
     }
 /////////////////////////////////////
 
-    @GetMapping("/id/{id}")
-    public  List<Ville> getVilleById(@PathVariable int id){
+    @GetMapping("/nom/{nom}")
+    public Ville findByNom(@PathVariable String nomVille){
+
+        return villeDao.extractByNom(nomVille);
+    }
+    /////////////////////////////////////
+
+    @GetMapping("/{id}")
+    public Ville findById(@PathVariable int id){
 
         return villeDao.extractById(id);
     }
+
 
 }
 

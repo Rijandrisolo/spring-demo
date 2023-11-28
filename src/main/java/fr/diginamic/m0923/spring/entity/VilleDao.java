@@ -25,20 +25,30 @@ public class VilleDao {
      */
     public List<Ville> extractAll() {
 
+
+
         TypedQuery<Ville> qVille = em.createQuery("Select v from Ville v",Ville.class);
         return qVille.getResultList();
 
     }
 
     /**
-     * Ville by Id
+     * Select Ville by Id
      *
      * @return
      */
-    public List<Ville> extractById(@PathVariable int id) {
+     public Ville  extractById(int id) {
 
-        TypedQuery<Ville> qIdVille = (TypedQuery<Ville>) em.createQuery(("Select v from Ville WHERE id = ?"));
-               return qIdVille.getResultList();
+         return em.find(Ville.class,id);
+     }
+
+    public Ville extractByNom(String nomVille) {
+
+        //return em.find(Ville.class,nomVille);
+        TypedQuery<Ville> qVille = em.createQuery("Select v from Ville v where v.nom =: nom",Ville.class);
+        qVille.setParameter("nom",nomVille);
+        return qVille.getSingleResult().get(0);
+
     }
 
     /**
@@ -46,10 +56,14 @@ public class VilleDao {
      *
      * @param nVille
      */
-    public void insertVille(Ville nVille){
+    @Transational
+    public insertVille(Ville nVille){
         em.persist(nVille);
+        return
 
 }
+
+
 }
 
 
