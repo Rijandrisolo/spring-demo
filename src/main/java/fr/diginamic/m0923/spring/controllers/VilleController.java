@@ -31,14 +31,20 @@ public class VilleController {
 
         return villeDao.extractByNom(nomVille);
     }
-    /////////////////////////////////////
+////////////////////////////////////////////
 
     @GetMapping("/{id}")
     public Ville findById(@PathVariable int id){
 
         return villeDao.extractById(id);
     }
+/////////////////////////////////////////
 
+    @GetMapping("/delete/{id}")
+    public Ville villeDelete(@PathVariable int id){
+
+        return villeDao.supprVille(id);
+    }
 
 }
 

@@ -64,6 +64,18 @@ public class VilleDao {
 
     }
 
+    /**
+     * Suppression Ville
+     *
+     * @param idVille
+     * @return
+     */
+    public Ville supprVille(int idVille){
+      Ville villeSuppr=  em.find(Ville.class,idVille);
+      em.remove((villeSuppr));
+      return null;
+    }
+
 
 }
 
