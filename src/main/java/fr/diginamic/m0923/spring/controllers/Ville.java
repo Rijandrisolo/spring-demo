@@ -1,12 +1,6 @@
-package fr.diginamic.m0923.spring.entity;
+package fr.diginamic.m0923.spring.controllers;
 
 import jakarta.persistence.*;
-import org.springframework.boot.autoconfigure.web.WebProperties;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
-
-import java.util.*;
-
 
 @Entity
 @Table(name ="VILLE")
@@ -29,18 +23,22 @@ public class Ville {
     }
 
     public int getId() {
+
         return id;
     }
 
     public void setId(int id) {
+
         this.id = id;
     }
 
     public String getNom() {
+
         return nom;
     }
 
     public void setNom(String nom) {
+
         this.nom = nom;
     }
 
@@ -49,6 +47,7 @@ public class Ville {
     }
 
     public void setNbHabitants(int nbHabitants) {
+
         this.nbHabitants = nbHabitants;
     }
 
