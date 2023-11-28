@@ -4,6 +4,7 @@ import fr.diginamic.m0923.spring.controllers.Ville;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
@@ -56,12 +57,12 @@ public class VilleDao {
      *
      * @param nVille
      */
-    @Transational
-    public insertVille(Ville nVille){
+    @Transactional
+    public Ville insertVille(Ville nVille){
         em.persist(nVille);
-        return
+    return(nVille) ;
 
-}
+    }
 
 
 }
