@@ -1,12 +1,10 @@
 package fr.diginamic.m0923.spring.entity;
 
-import fr.diginamic.m0923.spring.controllers.Ville;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
@@ -51,9 +49,9 @@ public class VilleDao {
     public Ville extractByNom(String nomVille) {
 
         //return em.find(Ville.class,nomVille);
-        TypedQuery<Ville> qVille = em.createQuery("Select v from Ville v where v.nom =: nom",Ville.class);
+        TypedQuery <Ville>  qVille = em.createQuery("Select v from Ville v where v.nom =: nom",Ville.class);
         qVille.setParameter("nom",nomVille);
-        return qVille.getSingleResult().get(0);
+        return qVille.getSingleResult();
 
     }
 

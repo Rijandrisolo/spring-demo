@@ -1,4 +1,4 @@
-package fr.diginamic.m0923.spring.controllers;
+package fr.diginamic.m0923.spring.entity;
 
 import jakarta.persistence.*;
 

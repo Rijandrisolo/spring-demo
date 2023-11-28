@@ -1,6 +1,7 @@
 package fr.diginamic.m0923.spring.controllers;
 
 
+import fr.diginamic.m0923.spring.entity.Ville;
 import fr.diginamic.m0923.spring.entity.VilleDao;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -26,7 +27,8 @@ public class VilleController {
     }
 /////////////////////////////////////
 
-    @GetMapping("/nom/{nom}")
+    @GetMapping("/nom/{nomVille}")
+    //public Ville findByNom(@PathVariable("nom") String nomVille){ /nom dans l'url
     public Ville findByNom(@PathVariable String nomVille){
 
         return villeDao.extractByNom(nomVille);
