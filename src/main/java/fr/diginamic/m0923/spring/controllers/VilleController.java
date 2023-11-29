@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/villes")
@@ -34,9 +33,11 @@ public class VilleController {
 
     @GetMapping("/nom/{nomVille}")
     //public Ville findByNom(@PathVariable("nom") String nomVille){ /nom dans l'url doit être égal à nom variable
-    public Ville findByNom(@PathVariable String nomVille) throws GestionException {
+    public List<Ville> findByNom(@PathVariable String nomVille) throws GestionException {
         ////
-       return (Ville) villeRepository.findByNom(nomVille);
+        System.out.println(nomVille);
+        //List<Ville> ville = villeRepository.findByNom(nomVille);
+        return villeRepository.findByNom(nomVille);
     }
 ////////////////////////////////////////////
 

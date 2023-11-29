@@ -48,9 +48,9 @@ public class VilleDao {
      * @param nomVille
      * @return
      */
-    public List<Ville> extractByNom( String nomVille) {
+    public Ville extractByNom( String nomVille) {
 
-        return (List<Ville>) em.find(Ville.class,nomVille);
+        return (Ville) em.find(Ville.class,nomVille);
        // TypedQuery List <Ville>  qVille = em.createQuery("Select v from Ville v where v.nom =: nom",Ville.class);
         //qVille.setParameter("nom",nomVille);
        // return qVille.getSingleResult();
