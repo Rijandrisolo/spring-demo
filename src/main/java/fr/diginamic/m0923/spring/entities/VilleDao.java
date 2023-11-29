@@ -1,4 +1,4 @@
-package fr.diginamic.m0923.spring.entity;
+package fr.diginamic.m0923.spring.entities;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -46,12 +46,12 @@ public class VilleDao {
      * @param nomVille
      * @return
      */
-    public Ville extractByNom(String nomVille) {
+    public List<Ville> extractByNom(String nomVille) {
 
-        //return em.find(Ville.class,nomVille);
-        TypedQuery <Ville>  qVille = em.createQuery("Select v from Ville v where v.nom =: nom",Ville.class);
-        qVille.setParameter("nom",nomVille);
-        return qVille.getSingleResult();
+        return (List<Ville>) em.find(Ville.class,nomVille);
+       // TypedQuery List <Ville>  qVille = em.createQuery("Select v from Ville v where v.nom =: nom",Ville.class);
+        //qVille.setParameter("nom",nomVille);
+       // return qVille.getSingleResult();
 
     }
 

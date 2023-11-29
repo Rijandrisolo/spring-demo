@@ -1,6 +1,8 @@
-package fr.diginamic.m0923.spring.entity;
+package fr.diginamic.m0923.spring.entities;
 
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
 
 @Entity
 @Table(name ="VILLE")
@@ -12,14 +14,18 @@ public class Ville {
     private String nom;
     @Column(name="nbhabitants")
     private int nbHabitants;
+    private String iddpt;
+
 
     public Ville() {
+
     }
 
-    public Ville(int id, String nom, int nbHabitants) {
+    public Ville(int id, String nom, int nbHabitants, int idDpt) {
         this.id = id;
         this.nom = nom;
         this.nbHabitants = nbHabitants;
+
     }
 
     public int getId() {

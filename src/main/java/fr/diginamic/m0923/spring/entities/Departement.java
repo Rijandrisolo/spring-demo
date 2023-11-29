@@ -1,21 +1,21 @@
-package fr.diginamic.m0923.spring.entity;
+package fr.diginamic.m0923.spring.entities;
 
 
 import jakarta.persistence.*;
 
 @Entity
 @Table(name ="DEPARTEMENT")
-public class departement {
+public class Departement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name ="nomdepartement")
     private String nomDepartement;
 
-    public departement() {
+    public Departement() {
     }
 
-    public departement(int id, String nomDepartement) {
+    public Departement(int id, String nomDepartement) {
         this.id = id;
         this.nomDepartement = nomDepartement;
     }
