@@ -54,11 +54,17 @@ public class VilleController {
     }
 
 @PutMapping("/inserer")
-public  Ville insererVille(@RequestBody Ville nvVille) throws GestionException {
+public  Ville insererVille( Ville nvVille) throws GestionException {
 
-    if(nvVille ==null){
+    if(nvVille.getNom() ==null){
         throw new GestionException("Erreur dans le nom de la ville");
     }
+    if(nvVille.getNbHabitants()<10){
+        throw new GestionException("Le nombre d'habitants doit être supérieur à 10");
+    } if(nvVille.getIddpt().length()==2){
+        throw new GestionException("Le code département doit avoir 2 caractères");
+    }
+
 
     return  villeRepository.save(nvVille);
 }

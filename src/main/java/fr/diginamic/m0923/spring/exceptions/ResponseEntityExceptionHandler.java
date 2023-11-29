@@ -7,7 +7,5 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class ResponseEntityExceptionHandler {
 
-    @ExceptionHandler({GestionException.class})
-    protected ResponseEntity<String>
 
 }

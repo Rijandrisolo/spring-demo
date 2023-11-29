@@ -21,30 +21,26 @@ public class Ville {
 
     }
 
-    public Ville(int id, String nom, int nbHabitants, int idDpt) {
+    public Ville(int id, String nom, int nbHabitants, String iddpt) {
         this.id = id;
         this.nom = nom;
         this.nbHabitants = nbHabitants;
-
+        this.iddpt = iddpt;
     }
 
     public int getId() {
-
         return id;
     }
 
     public void setId(int id) {
-
         this.id = id;
     }
 
     public String getNom() {
-
         return nom;
     }
 
     public void setNom(String nom) {
-
         this.nom = nom;
     }
 
@@ -53,17 +49,25 @@ public class Ville {
     }
 
     public void setNbHabitants(int nbHabitants) {
-
         this.nbHabitants = nbHabitants;
+    }
+
+    public String getIddpt() {
+        return iddpt;
+    }
+
+    public void setIddpt(String iddpt) {
+        this.iddpt = iddpt;
     }
 
     @Override
     public String toString() {
-        return "Ville :" +
+        return "Ville{" +
                 "id=" + id +
                 ", nom='" + nom + '\'' +
-                ", nbHabitants=" + nbHabitants
-                ;
+                ", nbHabitants=" + nbHabitants +
+                ", iddpt='" + iddpt + '\'' +
+                '}';
     }
 
     public Ville get(int i) {
