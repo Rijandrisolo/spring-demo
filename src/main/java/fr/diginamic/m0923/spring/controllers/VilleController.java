@@ -33,7 +33,7 @@ public class VilleController {
 /////////////////////////////////////
 
     @GetMapping("/nom/{nomVille}")
-    //public Ville findByNom(@PathVariable("nom") String nomVille){ /nom dans l'url
+    //public Ville findByNom(@PathVariable("nom") String nomVille){ /nom dans l'url doit être égal à nom variable
     public Ville findByNom(@PathVariable String nomVille) throws GestionException {
         ////
        return (Ville) villeDao.extractByNom(nomVille);
@@ -55,14 +55,16 @@ public class VilleController {
     }
 
 @PutMapping("/inserer")
-public  Ville insererVille(Ville nvVille) throws GestionException {
-
+public  Ville insererVille(@RequestBody Ville nvVille) throws GestionException {
+    System.out.println(nvVille);
     if(nvVille.getNom() ==null){
         throw new GestionException("Erreur dans le nom de la ville");
     }
     if(nvVille.getNbHabitants()<10){
         throw new GestionException("Le nombre d'habitants doit être supérieur à 10");
-    } if(nvVille.getCodeDept().length()>2){
+
+    } System.out.println(nvVille.getCodeDept().trim().length());
+    if(nvVille.getCodeDept().trim().length()<2 |nvVille.getCodeDept().trim().length()>2){
         throw new GestionException("Le code département doit avoir au maximum 2 caractères");
     }
     ////Ville unique
@@ -91,7 +93,7 @@ public  Ville insererVille(Ville nvVille) throws GestionException {
             throw new GestionException("Le nombre d'habitants doit être supérieur à 10");
         }
 //
-        if(nVille.getCodeDept().length()>2){
+        if(nVille.getCodeDept().trim().length()<2 |nVille.getCodeDept().trim().length()>2){
             throw new GestionException("Le code département doit avoir au maximum 2 caractères");
         }
 
@@ -102,7 +104,8 @@ public  Ville insererVille(Ville nvVille) throws GestionException {
                     v.setNbHabitants(nVille.getNbHabitants());
                     v.setNom(nVille.getNom());
                     v.setCodeDept(nVille.getCodeDept());
-                    if(nVille.getNom()==v.getNom() && nVille.getCodeDept()==v.getCodeDept()){
+
+                    if(nVille.getNom()== v.getNom() && nVille.getCodeDept()==v.getCodeDept()){
                         throw new GestionException("La ville doit être unique dans un département");
                     }
                     villeRepository.save(v);
