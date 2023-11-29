@@ -4,7 +4,6 @@ package fr.diginamic.m0923.spring.controllers;
 import fr.diginamic.m0923.spring.entities.Ville;
 import fr.diginamic.m0923.spring.entities.VilleDao;
 import fr.diginamic.m0923.spring.exceptions.GestionException;
-import fr.diginamic.m0923.spring.exceptions.NomVilleException;
 import fr.diginamic.m0923.spring.repositories.VilleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/villes")
@@ -62,8 +62,8 @@ public  Ville insererVille(Ville nvVille) throws GestionException {
     }
     if(nvVille.getNbHabitants()<10){
         throw new GestionException("Le nombre d'habitants doit être supérieur à 10");
-    } if(nvVille.getIddpt().length()==2){
-        throw new GestionException("Le code département doit avoir 2 caractères");
+    } if(nvVille.getIddpt().length()>2){
+        throw new GestionException("Le code département doit avoir au maximum 2 caractères");
     }
 
 
@@ -72,21 +72,22 @@ public  Ville insererVille(Ville nvVille) throws GestionException {
     @PostMapping("/update/{id}")
     public  Ville modifierVille(@PathVariable int id, @RequestBody Ville nVille) throws GestionException {
 
-            if(id<=0){
-                throw new GestionException("Id incorrect");
-            }
+        if(id<=0){
+            throw new GestionException("Id incorrect");
+        }
         if(nVille.getNom() ==null){
             throw new GestionException("Erreur dans le nom de la ville");
         }
         if(nVille.getNbHabitants()<10){
             throw new GestionException("Le nombre d'habitants doit être supérieur à 10");
         }
-        if(nVille.getIddpt().length()==2){
-            throw new GestionException("Le code département doit avoir 2 caractères");
+//        System.out.println(nVille.getIddpt().length());
+        if(nVille.getIddpt().length()>2){
+            throw new GestionException("Le code département doit avoir au maximum 2 caractères");
         }
+            Optional<Ville> vVille = villeRepository.findById(id);
+//            System.out.println("vVille "+vVille);
             List<Ville> ville = (List<Ville>) villeRepository.findAll();
-
-
             for(Ville v : ville){
                 if(v.getId()==id){
                     System.out.println(v.getNbHabitants());
@@ -97,8 +98,8 @@ public  Ville insererVille(Ville nvVille) throws GestionException {
                 }
 
             }
-            System.out.println(id);
-            System.out.println(nVille);
+//            System.out.println(id);
+//            System.out.println(nVille);
 
 
 
