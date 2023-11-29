@@ -14,18 +14,18 @@ public class Ville {
     private String nom;
     @Column(name="nbhabitants")
     private int nbHabitants;
-    private String iddpt;
+    private String codeDept;
 
 
     public Ville() {
 
     }
 
-    public Ville(int id, String nom, int nbHabitants, String iddpt) {
+    public Ville(int id, String nom, int nbHabitants, String codeDept) {
         this.id = id;
         this.nom = nom;
         this.nbHabitants = nbHabitants;
-        this.iddpt = iddpt;
+        this.codeDept = codeDept;
     }
 
     public int getId() {
@@ -52,12 +52,12 @@ public class Ville {
         this.nbHabitants = nbHabitants;
     }
 
-    public String getIddpt() {
-        return iddpt;
+    public String getCodeDept() {
+        return codeDept;
     }
 
-    public void setIddpt(String iddpt) {
-        this.iddpt = iddpt;
+    public void setCodeDept(String codeDept) {
+        this.codeDept = codeDept;
     }
 
     @Override
@@ -66,7 +66,7 @@ public class Ville {
                 "id=" + id +
                 ", nom='" + nom + '\'' +
                 ", nbHabitants=" + nbHabitants +
-                ", iddpt='" + iddpt + '\'' +
+                ", codeDept='" + codeDept + '\'' +
                 '}';
     }
 

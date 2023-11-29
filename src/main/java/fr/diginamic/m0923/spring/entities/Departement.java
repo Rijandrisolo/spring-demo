@@ -11,14 +11,17 @@ public class Departement {
     private int id;
     @Column(name ="nomdepartement")
     private String nomDepartement;
+    private String codeDepartement;
 
     public Departement() {
     }
 
-    public Departement(int id, String nomDepartement) {
+    public Departement(int id, String nomDepartement, String codeDepartement) {
         this.id = id;
         this.nomDepartement = nomDepartement;
+        this.codeDepartement = codeDepartement;
     }
+
 
     public int getId() {
         return id;
@@ -26,6 +29,14 @@ public class Departement {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getCodeDepartement() {
+        return codeDepartement;
+    }
+
+    public void setCodeDepartement(String codeDepartement) {
+        this.codeDepartement = codeDepartement;
     }
 
     public String getNomDepartement() {
@@ -38,9 +49,10 @@ public class Departement {
 
     @Override
     public String toString() {
-        return "departement{" +
+        return "Departement{" +
                 "id=" + id +
                 ", nomDepartement='" + nomDepartement + '\'' +
+                ", codeDepartement='" + codeDepartement + '\'' +
                 '}';
     }
 }

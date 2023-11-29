@@ -62,10 +62,19 @@ public  Ville insererVille(Ville nvVille) throws GestionException {
     }
     if(nvVille.getNbHabitants()<10){
         throw new GestionException("Le nombre d'habitants doit être supérieur à 10");
-    } if(nvVille.getIddpt().length()>2){
+    } if(nvVille.getCodeDept().length()>2){
         throw new GestionException("Le code département doit avoir au maximum 2 caractères");
     }
+    ////Ville unique
 
+    List<Ville> villes = (List<Ville>) villeRepository.findAll();
+    System.out.println(villes);
+    for (Ville ville : villes){
+        if(nvVille.getNom()==ville.getNom() && nvVille.getCodeDept()==ville.getCodeDept()){
+            throw new GestionException("La ville doit être unique dans un département");
+        }
+
+    }
 
     return  villeRepository.save(nvVille);
 }
@@ -82,7 +91,7 @@ public  Ville insererVille(Ville nvVille) throws GestionException {
             throw new GestionException("Le nombre d'habitants doit être supérieur à 10");
         }
 //        System.out.println(nVille.getIddpt().length());
-        if(nVille.getIddpt().length()>2){
+        if(nVille.getCodeDept().length()>2){
             throw new GestionException("Le code département doit avoir au maximum 2 caractères");
         }
             //Optional<Ville> vVille = villeRepository.findById(id);
@@ -93,7 +102,10 @@ public  Ville insererVille(Ville nvVille) throws GestionException {
                     System.out.println(v.getNbHabitants());
                     v.setNbHabitants(nVille.getNbHabitants());
                     v.setNom(nVille.getNom());
-                    v.setIddpt(nVille.getIddpt());
+                    v.setCodeDept(nVille.getCodeDept());
+                    if(nVille.getNom()==v.getNom() && nVille.getCodeDept()==v.getCodeDept()){
+                        throw new GestionException("La ville doit être unique dans un département");
+                    }
                     villeRepository.save(v);
                 }
 
