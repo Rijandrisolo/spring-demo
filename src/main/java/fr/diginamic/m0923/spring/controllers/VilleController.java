@@ -85,7 +85,7 @@ public  Ville insererVille(Ville nvVille) throws GestionException {
         if(nVille.getIddpt().length()>2){
             throw new GestionException("Le code département doit avoir au maximum 2 caractères");
         }
-            Optional<Ville> vVille = villeRepository.findById(id);
+            //Optional<Ville> vVille = villeRepository.findById(id);
 //            System.out.println("vVille "+vVille);
             List<Ville> ville = (List<Ville>) villeRepository.findAll();
             for(Ville v : ville){
