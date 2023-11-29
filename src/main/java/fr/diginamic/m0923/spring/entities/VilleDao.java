@@ -5,6 +5,8 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 
 import java.util.List;
@@ -46,7 +48,7 @@ public class VilleDao {
      * @param nomVille
      * @return
      */
-    public List<Ville> extractByNom(String nomVille) {
+    public List<Ville> extractByNom( String nomVille) {
 
         return (List<Ville>) em.find(Ville.class,nomVille);
        // TypedQuery List <Ville>  qVille = em.createQuery("Select v from Ville v where v.nom =: nom",Ville.class);

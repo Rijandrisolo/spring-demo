@@ -10,5 +10,7 @@ import java.util.Optional;
 public interface VilleRepository extends CrudRepository<Ville, Integer> {
 
 
+    Object findByNom(String nomVille);
+
 
 }

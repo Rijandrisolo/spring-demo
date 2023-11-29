@@ -36,7 +36,7 @@ public class VilleController {
     //public Ville findByNom(@PathVariable("nom") String nomVille){ /nom dans l'url doit être égal à nom variable
     public Ville findByNom(@PathVariable String nomVille) throws GestionException {
         ////
-       return (Ville) villeDao.extractByNom(nomVille);
+       return (Ville) villeRepository.findByNom(nomVille);
     }
 ////////////////////////////////////////////
 
@@ -93,7 +93,7 @@ public  Ville insererVille(@RequestBody Ville nvVille) throws GestionException {
             throw new GestionException("Le nombre d'habitants doit être supérieur à 10");
         }
 //
-        if(nVille.getCodeDept().trim().length()<2 |nVille.getCodeDept().trim().length()>2){
+        if(nVille.getCodeDept().trim().length()<2 | nVille.getCodeDept().trim().length()>2){
             throw new GestionException("Le code département doit avoir au maximum 2 caractères");
         }
 
