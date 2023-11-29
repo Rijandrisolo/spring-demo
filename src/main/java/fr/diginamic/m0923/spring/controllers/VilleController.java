@@ -90,12 +90,11 @@ public  Ville insererVille(Ville nvVille) throws GestionException {
         if(nVille.getNbHabitants()<10){
             throw new GestionException("Le nombre d'habitants doit être supérieur à 10");
         }
-//        System.out.println(nVille.getIddpt().length());
+//
         if(nVille.getCodeDept().length()>2){
             throw new GestionException("Le code département doit avoir au maximum 2 caractères");
         }
-            //Optional<Ville> vVille = villeRepository.findById(id);
-//            System.out.println("vVille "+vVille);
+
             List<Ville> ville = (List<Ville>) villeRepository.findAll();
             for(Ville v : ville){
                 if(v.getId()==id){
@@ -110,12 +109,7 @@ public  Ville insererVille(Ville nvVille) throws GestionException {
                 }
 
             }
-//            System.out.println(id);
-//            System.out.println(nVille);
-
-
-
-
+//
        return null;
     }
 }
