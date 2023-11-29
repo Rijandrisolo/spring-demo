@@ -50,11 +50,12 @@ public class VilleController {
     @GetMapping("/delete/{id}")
     public Ville villeDelete(@PathVariable int id){
 
-        return villeDao.supprVille(id);
+        villeRepository.deleteById(id);
+        return null;
     }
 
 @PutMapping("/inserer")
-public  Ville insererVille( Ville nvVille) throws GestionException {
+public  Ville insererVille(Ville nvVille) throws GestionException {
 
     if(nvVille.getNom() ==null){
         throw new GestionException("Erreur dans le nom de la ville");
@@ -68,6 +69,42 @@ public  Ville insererVille( Ville nvVille) throws GestionException {
 
     return  villeRepository.save(nvVille);
 }
+    @PostMapping("/update/{id}")
+    public  Ville modifierVille(@PathVariable int id, @RequestBody Ville nVille) throws GestionException {
+
+            if(id<=0){
+                throw new GestionException("Id incorrect");
+            }
+        if(nVille.getNom() ==null){
+            throw new GestionException("Erreur dans le nom de la ville");
+        }
+        if(nVille.getNbHabitants()<10){
+            throw new GestionException("Le nombre d'habitants doit être supérieur à 10");
+        }
+        if(nVille.getIddpt().length()==2){
+            throw new GestionException("Le code département doit avoir 2 caractères");
+        }
+            List<Ville> ville = (List<Ville>) villeRepository.findAll();
+
+
+            for(Ville v : ville){
+                if(v.getId()==id){
+                    System.out.println(v.getNbHabitants());
+                    v.setNbHabitants(nVille.getNbHabitants());
+                    v.setNom(nVille.getNom());
+                    v.setIddpt(nVille.getIddpt());
+                    villeRepository.save(v);
+                }
+
+            }
+            System.out.println(id);
+            System.out.println(nVille);
+
+
+
+
+       return null;
+    }
 }
 
 
